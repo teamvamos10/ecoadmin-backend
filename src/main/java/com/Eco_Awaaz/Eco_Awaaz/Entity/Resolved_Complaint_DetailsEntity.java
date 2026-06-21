@@ -2,6 +2,7 @@ package com.Eco_Awaaz.Eco_Awaaz.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.domain.Persistable;
 
 import java.util.Date;
 import java.util.UUID;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Resolved_Complaint_DetailsEntity {
+public class Resolved_Complaint_DetailsEntity implements Persistable<UUID> {
 
         @Id
         @Column(name = "id")
@@ -35,4 +36,10 @@ public class Resolved_Complaint_DetailsEntity {
 
         @Column(name = "status")
         private String status;
+
+        @Override
+        @Transient
+        public boolean isNew() {
+                return true;
+        }
 }
