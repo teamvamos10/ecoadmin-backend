@@ -240,4 +240,8 @@ public class DashboardService {
         resolvedRepository.save(resolved);
         complaintRepository.delete(complaint);
     }
+
+    public List<Resolved_Complaint_DetailsEntity> getResolvedComplaints(String resourceType) {
+        return resolvedRepository.findByResourceTypeIgnoreCase(resourceType);
+    }
 }
